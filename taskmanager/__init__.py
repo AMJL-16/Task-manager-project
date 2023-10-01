@@ -12,7 +12,7 @@ if os.environ.get("DEVELOPMENT") == "TRUE":
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 else:
     uri = os.environ.get("DATABASE_URL")
-    if uri.replace("postgres://"):
+    if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgres://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
